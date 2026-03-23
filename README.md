@@ -1,5 +1,5 @@
-# Bienestar y Supervivencia Equina
-## Que nos dicen los datos sobre el estado emocional y fisico de los caballos?
+# 🐎 Bienestar y Supervivencia Equina
+## Predicción de riesgo clínico en caballos usando Machine Learning
 
 ![Python](https://img.shields.io/badge/Python-3.12-blue)
 ![Jupyter](https://img.shields.io/badge/Jupyter-Notebook-orange)
@@ -10,62 +10,69 @@
 
 ---
 
-## Descripcion
+## 📌 Descripción
 
-Este proyecto analiza datos clinicos de **299 caballos**
-para identificar patrones de estres, dolor y bienestar,
-y predecir la supervivencia usando Machine Learning.
-Se construyo un **Indice de Bienestar propio** basado en
-indicadores clinicos reales.
+Este proyecto analiza datos clínicos de **299 caballos** para identificar
+patrones de estrés, dolor y bienestar, y predecir la probabilidad de
+supervivencia mediante modelos de Machine Learning.
 
-> *"Los datos clinicos cuentan una historia de sufrimiento
-> o bienestar antes de que cualquier diagnostico sea posible"*
+Además, se desarrolló un **Índice de Bienestar Equino propio**, basado en
+indicadores clínicos relevantes, que permite clasificar el estado de salud
+de los animales de forma interpretable.
 
----
-
-## Objetivos
-
-- Analizar indicadores clinicos de estres y bienestar
-- Identificar factores de riesgo de mortalidad equina
-- Construir un indice de bienestar propio
-- Clasificar caballos por nivel de riesgo con ML
-- Comunicar hallazgos con visualizaciones avanzadas
+> *"Los datos clínicos cuentan una historia de sufrimiento o bienestar
+> antes de que cualquier diagnóstico sea evidente."*
 
 ---
 
-## Preguntas que responde este analisis
+## 🎯 Objetivo del proyecto
 
-1. Que indicadores fisicos se asocian con mayor mortalidad?
-2. La edad influye en la supervivencia de los caballos?
-3. Que variable predice mejor si un caballo sobrevivira?
-4. Puede un modelo clasificar correctamente el nivel de riesgo?
-5. Como se distribuye el bienestar en el plantel analizado?
+Desarrollar un modelo capaz de:
 
----
-
-## Visualizaciones principales
-
-| Grafico | Descripcion |
-|---------|-------------|
-| ![supervivencia](images/distribucion_supervivencia.png) | Distribucion de supervivencia |
-| ![bienestar](images/bienestar_vs_outcome.png) | Bienestar vs resultado clinico |
-| ![pulso](images/pulso_por_outcome.png) | Pulso por resultado |
-| ![temperatura](images/temperatura_por_outcome.png) | Temperatura por resultado |
-| ![dolor](images/dolor_vs_outcome.png) | Dolor vs supervivencia |
-| ![correlaciones](images/correlaciones_clinicas.png) | Mapa de correlaciones |
-| ![indice](images/bienestar_por_outcome.png) | Indice de bienestar por resultado |
-| ![edad](images/edad_vs_outcome.png) | Impacto de la edad |
-| ![confusion](images/matriz_confusion_equino.png) | Matriz de confusion ML |
-| ![importancia](images/importancia_variables_equino.png) | Variables mas importantes |
+- Predecir la supervivencia de caballos a partir de variables clínicas
+- Identificar factores de riesgo asociados a mortalidad
+- Construir un índice de bienestar interpretable
+- Apoyar la toma de decisiones clínicas en etapas tempranas
 
 ---
 
-## Machine Learning
+## ❓ Preguntas que responde
 
-Se entrenó un clasificador **Random Forest** para predecir
-si un caballo sobrevivira, morira o sera sacrificado.
+1. ¿Qué indicadores clínicos están asociados con mayor mortalidad?
+2. ¿La edad influye en la supervivencia?
+3. ¿Qué variables son más predictivas del resultado clínico?
+4. ¿Puede un modelo clasificar correctamente el nivel de riesgo?
+5. ¿Cómo se distribuye el bienestar en la población analizada?
 
-### Resultados del modelo
+---
+
+## 🧪 Dataset
+
+- **Fuente:** Kaggle — Horse Survival Dataset
+- **Registros:** 299 caballos
+- **Tipo de datos:** Clínicos (pulso, temperatura, dolor, etc.)
+
+---
+
+## ⚙️ Metodología
+
+1. Limpieza y preprocesamiento de datos
+2. Análisis exploratorio (EDA)
+3. Ingeniería de variables
+4. Construcción del Índice de Bienestar
+5. Entrenamiento de modelo Random Forest
+6. Evaluación del modelo
+
+---
+
+## 🤖 Modelo de Machine Learning
+
+Se entrenó un modelo de clasificación para predecir tres resultados:
+- **Lived** — Sobrevive
+- **Died** — Muere
+- **Euthanized** — Sacrificado
+
+### 📊 Resultados
 
 | Clase | Precision | Recall | F1-Score |
 |-------|-----------|--------|----------|
@@ -74,20 +81,30 @@ si un caballo sobrevivira, morira o sera sacrificado.
 | Euthanized | 0.50 | 0.11 | 0.18 |
 | **Accuracy** | | | **65%** |
 
-### Hallazgos clave
+### 🧠 Interpretación
 
-- La **proteina total en sangre** es el predictor
-  mas importante de supervivencia
-- Los caballos **jovenes** tienen el doble de mortalidad
-  que los adultos (45.8% vs 24%)
-- Un caballo con indicadores saludables fue clasificado
-  como LIVED con **86% de probabilidad**
+El modelo logra identificar correctamente el **83% de los caballos que
+sobreviven**, lo que lo convierte en una herramienta útil para priorizar
+atención clínica en etapas tempranas.
 
 ---
 
-## Indice de Bienestar Propio
+## 🔍 Hallazgos clave
 
-Se diseño un indice original (0-9) basado en:
+- La **proteína total en sangre** es el predictor más importante de supervivencia
+- Los caballos **jóvenes** presentan mayor mortalidad (**45.8%**)
+  en comparación con adultos (**24%**)
+- Variables fisiológicas como **pulso** y **temperatura** tienen
+  alta relación con el estado clínico
+
+> 📌 *Altos niveles de proteína pueden indicar deshidratación o procesos
+> inflamatorios, aumentando el riesgo de mortalidad.*
+
+---
+
+## 📊 Índice de Bienestar Equino (propio)
+
+Se diseñó un índice original **(0–9)** basado en:
 
 | Indicador | Peso |
 |-----------|------|
@@ -96,22 +113,75 @@ Se diseño un indice original (0-9) basado en:
 | Dolor | 3 puntos |
 | Peristalsis | 2 puntos |
 
-| Nivel | Rango | Tasa de supervivencia |
+### Clasificación por nivel
+
+| Nivel | Rango | Tasa de Supervivencia |
 |-------|-------|-----------------------|
-| Alto | 8-9 | 60% |
-| Moderado | 5-7 | 79% |
-| Bajo | 2-4 | 45% |
-| Critico | 0-1 | 18% |
+| Alto | 8–9 | 60% |
+| Moderado | 5–7 | 79% |
+| Bajo | 2–4 | 45% |
+| Crítico | 0–1 | 18% |
 
 ---
 
-## Estructura del proyecto
+## 📈 Visualizaciones
+
+| Gráfico | Descripción |
+|---------|-------------|
+| ![supervivencia](images/distribucion_supervivencia.png) | Distribución de supervivencia |
+| ![bienestar](images/bienestar_vs_outcome.png) | Bienestar vs resultado clínico |
+| ![pulso](images/pulso_por_outcome.png) | Pulso por resultado |
+| ![temperatura](images/temperatura_por_outcome.png) | Temperatura por resultado |
+| ![dolor](images/dolor_vs_outcome.png) | Dolor vs supervivencia |
+| ![correlaciones](images/correlaciones_clinicas.png) | Mapa de correlaciones |
+| ![indice](images/bienestar_por_outcome.png) | Índice de bienestar por resultado |
+| ![edad](images/edad_vs_outcome.png) | Impacto de la edad |
+| ![confusion](images/matriz_confusion_equino.png) | Matriz de confusión ML |
+| ![importancia](images/importancia_variables_equino.png) | Variables más importantes |
+
+---
+
+## 💼 Aplicación práctica
+
+Este modelo puede ser utilizado en contextos veterinarios para:
+
+- Identificar caballos en alto riesgo de mortalidad
+- Priorizar atención clínica
+- Apoyar decisiones de tratamiento o eutanasia
+- Mejorar la gestión de recursos en clínicas o centros ecuestres
+
+---
+
+## 🛠️ Tecnologías utilizadas
+
+- **Python 3.12**
+- **Pandas** — manipulación de datos
+- **Matplotlib / Seaborn** — visualización avanzada
+- **Scikit-learn** — Random Forest, StandardScaler
+- **Google Colab** — entorno de desarrollo
+- **GitHub** — control de versiones
+
+---
+
+## 🚀 Cómo ejecutar
+```bash
+git clone https://github.com/George1902/bienestar_equino.git
+cd bienestar_equino
+pip install -r requirements.txt
+```
+
+1. Descargar dataset desde [Kaggle](https://www.kaggle.com/datasets/yasserh/horse-survival-dataset)
+2. Guardar como `horse.csv`
+3. Ejecutar el notebook en Google Colab o Jupyter
+
+---
+
+## 📁 Estructura del proyecto
 ```
 bienestar-equino/
 │
 ├── images/
 │   └── (todas las visualizaciones)
-│
 ├── Analisis_Bienestar_Equino.ipynb
 ├── README.md
 └── requirements.txt
@@ -119,38 +189,7 @@ bienestar-equino/
 
 ---
 
-## Tecnologias utilizadas
-
-- **Python 3.12**
-- **Pandas** — manipulacion de datos
-- **Matplotlib / Seaborn** — visualizacion avanzada
-- **Scikit-learn** — Random Forest, StandardScaler
-- **Google Colab** — entorno de desarrollo
-- **GitHub** — control de versiones
-
----
-
-## Como ejecutar el proyecto
-
-1. Clona el repositorio:
-```bash
-git clone https://github.com/George1902/bienestar-equino.git
-```
-
-2. Instala las dependencias:
-```bash
-pip install -r requirements.txt
-```
-
-3. Descarga el dataset desde Kaggle:
-   [Horse Survival Dataset](https://www.kaggle.com/datasets/yasserh/horse-survival-dataset)
-   y guardalo como `horse.csv`
-
-4. Abre el cuaderno en Google Colab o Jupyter
-
----
-
-## requirements.txt
+## 📋 requirements.txt
 ```
 pandas
 matplotlib
@@ -161,24 +200,35 @@ jupyter
 
 ---
 
-## Fuente de datos
+## 📊 Fuente de datos
 
 **Horse Survival Dataset**
 Kaggle — Yasser H
-Dataset: https://www.kaggle.com/datasets/yasserh/horse-survival-dataset
+🔗 https://www.kaggle.com/datasets/yasserh/horse-survival-dataset
 
 ---
 
-## Autor
+## 👨‍💻 Autor
 
 **Jorge Ojeda**
-Estudiante — Oracle Next Education (ONE) — Alura LATAM
-Especializacion: Ciencia de Datos
-2026
+Estudiante de Ciencia de Datos
+Oracle Next Education (ONE) — Alura LATAM
+📅 2026
 
 ---
 
-## Licencia
+## 🚀 Próximas mejoras
 
-Proyecto de uso educativo y libre distribucion.
-Los datos estan disponibles publicamente en Kaggle.
+- Implementación de aplicación interactiva con **Streamlit**
+- Optimización de hiperparámetros del modelo
+- Incorporación de más variables clínicas
+- Validación con datasets adicionales
+- Dashboard interactivo con Power BI
+
+---
+
+## 📄 Licencia
+
+Proyecto de uso educativo y libre distribución.
+Los datos están disponibles públicamente en Kaggle bajo
+licencia de uso abierto.
