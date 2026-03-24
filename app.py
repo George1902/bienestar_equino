@@ -1,2 +1,3 @@
 import streamlit as st
-st.title("App funcionando")
+import pandas as pd
+st.title("App funcionando con pandas")
