@@ -2,6 +2,7 @@ import streamlit as st
 import pickle
 import numpy as np
 import pandas as pd
+import os
 
 # ── Configuración de la página ────────────────────────────
 st.set_page_config(
@@ -9,6 +10,17 @@ st.set_page_config(
     page_icon="🐴",
     layout="centered"
 )
+
+@st.cache_data
+def cargar_datos():
+    ruta = os.path.join('data', 'horse_limpio.csv')
+    df = pd.read_csv(ruta)
+    return df
+    
+df = cargar_datos()
+
+st.write('Datos Cargados: ')
+st.write(df.head())
 
 # ── Cargar modelos ────────────────────────────────────────
 @st.cache_resource
